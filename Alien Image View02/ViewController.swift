@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var alienImageViewer: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
     
+    
+    var check = 0
     var count = 1
     
     override func viewDidLoad() {
@@ -24,10 +26,16 @@ class ViewController: UIViewController {
 
     @IBAction func buttonPressed(_ sender: Any) {
         //print("Button Pressed")
-        count+=1
         
-        if (count>5){
-            count = 1
+        if  count == 5 {
+            check = 1
+        } else if count == 1 {
+            check = 0
+        }
+        if check == 0 {
+            count+=1
+        } else if check == 1 {
+            count-=1
         }
         
         alienImageViewer.image = UIImage(named: "frame\(count).png")
